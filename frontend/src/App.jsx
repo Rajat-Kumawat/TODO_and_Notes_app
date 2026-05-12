@@ -9,7 +9,7 @@ function App() {
   }, []);
 
   const fetchTodos = async () => {
-    try{
+    try {
       const response = await axios.get("http://localhost:5000/");
       setTodos(response.data);
     } catch (error) {
@@ -23,11 +23,18 @@ function App() {
 
       {todos.map((todo) => (
         <div key={todo._id} style={{ border: "2px solid #96907d", padding: "10px", marginBottom: "10px" }}>
-          <h2>{todo.Title}</h2>
-          <p>{todo.Description}</p>
-        </div> 
+          <div>
+            <h2>{todo.Title}</h2>
+            <p>{todo.Description}</p>
+          </div>
+          <div>
+            <button>Update</button><br/>
+            <button>Delete</button>
+          </div>
+        </div>
       ))}
     </>
-)}
+  )
+}
 
 export default App
